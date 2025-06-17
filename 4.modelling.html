@@ -52,20 +52,33 @@
                             <div class="loading-overlay" id="loading-overlay">
                                 Loading 3D model...
                             </div>
+                            <iframe id="sketchfab-iframe" 
+                                    title="3D Model Viewer"
+                                    frameborder="0" 
+                                    allowfullscreen 
+                                    mozallowfullscreen="true" 
+                                    webkitallowfullscreen="true" 
+                                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                                    xr-spatial-tracking 
+                                    execution-while-out-of-viewport 
+                                    execution-while-not-rendered 
+                                    web-share
+                                    src="about:blank"> <!-- Start with blank src -->
+                            </iframe>
                             <div class="model-controls">
                                 <button class="control-btn" id="reset-view">Reset View</button>
-                                <button class="control-btn" id="toggle-wireframe">Toggle Wireframe</button>
+                                <button class="control-btn" id="toggle-wireframe">Toggle Display Mode</button>
                             </div>
                         </div>
-                        
+
                         <!-- Model selector thumbnails -->
                         <div class="thumbnail-container" role="tablist">
                             <button class="thumbnail active" role="tab" aria-selected="true" 
-                                onclick="loadModel('Images/box.fbx', this)">
+                                onclick="loadSketchfabModel('c327e50e5ae54c059e8bd28ce382d0bf', this)">
                                 <img src="Images/untitled.png" alt="3D Sword Model 1">
                             </button>
                             <button class="thumbnail" role="tab" aria-selected="false" 
-                                onclick="loadModel('sword2', this)">
+                                onclick="loadSketchfabModel('47db06e8261c41e7a808963c1333d02c', this)">
                                 <img src="Images/rfgvsd.png" alt="3D Sword Model 2">
                             </button>
                         </div>
@@ -74,13 +87,13 @@
 
                 <section class="about-container" aria-labelledby="about-heading">
                     <h2 id="about-heading">About the Projects</h2>
-                    <p>Both swords were made in 2 days using Blender's powerful modeling tools.</p>
+                    <p>Both swords were made in 2 days each using Blender's modeling tools.</p>
                 </section>
 
                 <section class="learned-container" aria-labelledby="learned-heading">
                     <h2 id="learned-heading">What I Learned</h2>
                     <ul class="learnings-list">
-                        <li><strong>Texturing:</strong> Textures were made using Blender's node texturing system.</li>
+                        <li><strong>Texturing:</strong> Textures were made using Blender's node shading system.</li>
                         <li><strong>Efficient modeling:</strong> Blender has many modeling features that make creating complex objects easier.</li>
                         <li><strong>3D Pipeline:</strong> Learned the complete workflow from modeling to texturing to rendering.</li>
                     </ul>
