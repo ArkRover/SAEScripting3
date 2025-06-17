@@ -1,36 +1,256 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Horrid Project</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="icon" type="image/x-icon" href="Images/Pixel.png">
+        <link rel="stylesheet" href="projectStyle.css">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        Project info
-        role
-        team size
-        time
-        engine
+        <header class="main-header">
+            <nav class="main-nav" aria-label="Main navigation">
+                <div class="nav-container">
+                    <!-- Logo/home link -->
+                    <a href="index.html" class="nav-logo" aria-label="Home">
+                        <span>Portfolio</span>
+                    </a>
+                    
+                    <!-- Main navigation -->
+                    <ul id="primary-navigation" class="nav-list">
+                        <li class="nav-item"><a href="1.dungeondive.html" class="nav-link">Dungeon Dive</a></li>
+                        <li class="nav-item"><a href="2.spellBook.html" class="nav-link">Spell Book</a></li>
+                        <li class="nav-item"><a href="3.horrid.html" class="nav-link">Horrid</a></li>
+                        <li class="nav-item"><a href="4.modelling.html" class="nav-link">3D Models</a></li>
+                        <!--<li class="nav-item"><a href="5.art.html" class="nav-link">2D Art</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-        About project
-        Horrid is a First Person horror game with puzzles for the player to solve while the getting chased by monsters.
-        The game has a interaction mechanic which is what is used to solve the puzzles together with an item system and inventory system. 
+        <main class="content-wrapper">
+            <article class="project-article">
+                <h1 class="project-title">Horrid</h1>
+                
+                <!-- Media gallery section -->
+                <section class="media-gallery" aria-labelledby="gallery-heading">
+                    <h2 id="gallery-heading" class="visually-hidden">Game Screenshots and Video</h2>
+                    
+                    <div class="gallery-container">
+                        <div class="main-media-container">
+                            <!-- Image will be shown by default -->
+                            <figure class="main-image-container active-media">
+                                <img id="main-image" src="Images\Still 2025-06-17 135502_1.1.1.jpg" alt="Dungeon Dive gameplay screenshot">
+                                <figcaption class="visually-hidden">Main game screenshot</figcaption>
+                            </figure>
+                            
+                            <!-- YouTube video container (hidden by default) -->
+                            <div class="video-container">
+                                <iframe id="youtube-video" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="thumbnail-container" role="tablist">
+                            <button class="thumbnail active" role="tab" aria-selected="true" 
+                                onclick="showImage('Images/Still 2025-06-17 135502_1.1.1.jpg', this)">
+                                <img src="Images\Still 2025-06-17 135502_1.1.1.jpg" alt="Thumbnail 1: Dungeon environment">
+                            </button>
+                            <button class="thumbnail" role="tab" aria-selected="false" 
+                                onclick="showYouTubeVideo('w419-GBbeZA', this)">
+                                <img src="Images\Still 2025-06-17 135542_1.1.1.jpg" alt="Watch gameplay trailer">
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Project information sections -->
+                <section class="project-info-container" aria-labelledby="project-info-heading">
+                    <h2 id="project-info-heading">Project Details</h2>
+                    <dl class="project-details">
+                        <dt>Role:</dt>
+                        <dd>Game Designer, Programmer</dd>
+                        
+                        <dt>Team Size: </dt>
+                        <dd>1</dd>
+                        
+                        <dt>Development Time: </dt>
+                        <dd>1 Month</dd>
+                        
+                        <dt>Engine: </dt>
+                        <dd>Unity</dd>
+                    </dl>
+                </section>
 
-        Code snippet
+                <section class="about-container" aria-labelledby="about-heading">
+                    <h2 id="about-heading">About the Project</h2>
+                    <p>Horrid is a prototype First Person horror game with puzzles for the player to solve while the getting chased by monsters.<br>
+                        The game has a interaction mechanic which is what is used to solve the puzzles together with an item system and inventory system. <br><br>
+                    </p>
 
-        What i learnd
+                    <p>The game features: 
+                        <br>An item system with each item having a different function, a compass for navigation, a screwdriver for openning circuit breakers.
+                        <br>Monsters that chase the player.
+                        <br>
+                    </p>
+                </section>
 
-        Download and play Horrid on itch.io
-        <script src="" async defer></script>
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">What I Learned</h2>
+                    <ul class="learnings-list">
+                        <li><strong>3D Enemy Pathing:</strong> How to make enemies for the player and added unity's nav mesh system for enemy pathing with my follow code, this stopped the enemy from going through walls.</li>
+                        <li><strong>Enemy States:</strong> I added states to an enemy so when the player is looking at it, it doesn't move.</li>
+                        <li><strong>Interactions:</strong> How to make a interaction system.</li>
+                    </ul>
+                </section>
+
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">Code for checking interactables</h2>
+<pre><code class="language-csharp">
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Check : MonoBehaviour
+{
+    private MonsterController monster;
+    private GhostController ghost;
+    public PlayerController controls;
+    private PlayerCam cam;
+    private CameraShake shakecam;
+    [Tooltip("The doll attached to the camera")]
+    public GameObject dollScare;
+    public GameObject ghostScare;
+
+    private Inventory inventory;
+
+    private void Start()
+    {
+        controls = GetComponent<PlayerController>();
+        dollScare.SetActive(false);
+        ghostScare.SetActive(false);
+
+    }
+    void Update()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            monster = enemy.GetComponent<MonsterController>();
+            Vector3 viewportPos = Camera.main.WorldToViewportPoint(enemy.transform.position);
+
+            if(monster != null)
+            {
+                // Check if position is within camera view (0-1 in x and y, and in front of camera)
+                if (viewportPos.x >= 0 && viewportPos.x <= 1 && viewportPos.y >= 0 && viewportPos.y <= 1 && viewportPos.z > 0)
+                {
+                    // Perform a raycast from camera to enemy
+                    Vector3 cameraToEnemy = monster.transform.position - Camera.main.transform.position;
+                    Ray ray = new Ray(Camera.main.transform.position, cameraToEnemy.normalized);
+                    float maxDistance = cameraToEnemy.magnitude;
+
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, maxDistance))
+                    {
+                        // Check if the ray hit the monster (compare by instance ID to be precise)
+                        if (hit.collider.gameObject.GetInstanceID() == monster.gameObject.GetInstanceID())
+                        {
+                            monster.isLooking = true;
+                        }
+                        else
+                        {
+                            monster.isLooking = false;
+                        }
+                    }
+                    else
+                    {
+                        // This shouldn't normally happen since we're checking viewport position first
+                        monster.isLooking = false;
+                    }
+                }
+                else
+                {
+                    monster.isLooking = false;
+                }
+            }
+
+            
+        }
+        FindAnyObjectByType<AudioManager>().PlayAudio("Ambience");
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //Disable the player's controls
+            controls.enabled = false;
+            cam = FindAnyObjectByType<PlayerCam>();
+            cam.enabled = false;
+
+            monster = collision.gameObject.GetComponent<MonsterController>();
+            if (monster != null)
+            {
+                monster.end = true;
+                dollScare.SetActive(true);
+            }
+
+            ghost = collision.gameObject.GetComponent<GhostController>();
+            if (ghost != null)
+            {
+                ghost.end = true;
+                ghostScare.SetActive(true);
+            }
+
+            GameObject Doll = GameObject.Find("SKM_DemonDoll_Var1");
+            if(Doll != null)
+            {
+                Doll.SetActive(false);
+            }
+            
+            GameObject Ghost = GameObject.Find("ghostgirl");
+            if(Ghost != null)
+            {
+                Ghost.SetActive(false);
+            }
+
+            inventory = FindAnyObjectByType<Inventory>();
+
+            if (inventory != null)
+            {
+                //Disable the inventory
+                inventory.dead = true;
+            }
+
+            shakecam = FindAnyObjectByType<CameraShake>();
+            StartCoroutine(shakecam.Shake(1.5f, 0.1f));
+
+            StartCoroutine(Wait());
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Menu");
+    }
+}
+</code></pre>
+                </section>
+
+                <section class="download-container" aria-labelledby="download-heading">
+                    <h2 id="download-heading">Play Horrid</h2>
+                    <p>Available now on itch.io</p>
+                    <a href="" class="download-button">
+                        <span class="button-icon">🎮</span>
+                        Download on itch.io
+                    </a>
+                </section>
+            </article>
+        </main>
+
+        <script src="projectScript.js" async defer></script>
     </body>
 </html>

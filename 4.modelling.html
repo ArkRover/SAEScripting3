@@ -1,22 +1,94 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>3D Models</title>
+        <link rel="icon" type="image/x-icon" href="Images/Pixel.png">
+        <meta name="description" content="Portfolio project showcasing Dungeon Dive, a commercial RPG Maker MV game developed by a solo game designer">
+        <link rel="stylesheet" href="projectStyle.css">
         <link rel="stylesheet" href="4.modStyle.css">
+        <!-- Three.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+        <!-- GLTFLoader for loading 3D models -->
+        <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+        <!-- FBXLoader for FBX models -->
+        <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/FBXLoader.js"></script>
+        <!-- OrbitControls for model interaction -->
+        <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        page for 3D models
-        <script src="" async defer></script>
+        <header class="main-header">
+            <nav class="main-nav" aria-label="Main navigation">
+                <div class="nav-container">
+                    <!-- Logo/home link -->
+                    <a href="index.html" class="nav-logo" aria-label="Home">
+                        <span>Portfolio</span>
+                    </a>
+                    
+                    <!-- Main navigation -->
+                    <ul id="primary-navigation" class="nav-list">
+                        <li class="nav-item"><a href="1.dungeondive.html" class="nav-link">Dungeon Dive</a></li>
+                        <li class="nav-item"><a href="2.spellBook.html" class="nav-link">Spell Book</a></li>
+                        <li class="nav-item"><a href="3.horrid.html" class="nav-link">Horrid</a></li>
+                        <li class="nav-item"><a href="4.modelling.html" class="nav-link">3D Models</a></li>
+                        <!--<li class="nav-item"><a href="5.art.html" class="nav-link">2D Art</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main class="content-wrapper">
+            <article class="project-article">
+                <h1 class="project-title">3D Models</h1>
+                
+                <!-- 3D Model Gallery section -->
+                <section class="media-gallery" aria-labelledby="gallery-heading">
+                    <h2 id="gallery-heading" class="visually-hidden">3D Model Viewers</h2>
+                    
+                    <div class="gallery-container">
+                        <!-- Main 3D model viewer -->
+                        <div class="model-container" id="model-viewer">
+                            <div class="loading-overlay" id="loading-overlay">
+                                Loading 3D model...
+                            </div>
+                            <div class="model-controls">
+                                <button class="control-btn" id="reset-view">Reset View</button>
+                                <button class="control-btn" id="toggle-wireframe">Toggle Wireframe</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Model selector thumbnails -->
+                        <div class="thumbnail-container" role="tablist">
+                            <button class="thumbnail active" role="tab" aria-selected="true" 
+                                onclick="loadModel('Images/box.fbx', this)">
+                                <img src="Images/untitled.png" alt="3D Sword Model 1">
+                            </button>
+                            <button class="thumbnail" role="tab" aria-selected="false" 
+                                onclick="loadModel('sword2', this)">
+                                <img src="Images/rfgvsd.png" alt="3D Sword Model 2">
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-container" aria-labelledby="about-heading">
+                    <h2 id="about-heading">About the Projects</h2>
+                    <p>Both swords were made in 2 days using Blender's powerful modeling tools.</p>
+                </section>
+
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">What I Learned</h2>
+                    <ul class="learnings-list">
+                        <li><strong>Texturing:</strong> Textures were made using Blender's node texturing system.</li>
+                        <li><strong>Efficient modeling:</strong> Blender has many modeling features that make creating complex objects easier.</li>
+                        <li><strong>3D Pipeline:</strong> Learned the complete workflow from modeling to texturing to rendering.</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+
+        <script src="projectScript.js" defer></script>
+        <script src="4.modStyle.js" defer></script>
     </body>
 </html>

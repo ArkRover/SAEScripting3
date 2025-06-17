@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Spell Book Project</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="Images/Pixel.png">
+        <link rel="stylesheet" href="projectStyle.css">
+    </head>
+    <body>
+        <header class="main-header">
+            <nav class="main-nav" aria-label="Main navigation">
+                <div class="nav-container">
+                    <!-- Logo/home link -->
+                    <a href="index.html" class="nav-logo" aria-label="Home">
+                        <span>Portfolio</span>
+                    </a>
+                    
+                    <!-- Main navigation -->
+                    <ul id="primary-navigation" class="nav-list">
+                        <li class="nav-item"><a href="1.dungeondive.html" class="nav-link">Dungeon Dive</a></li>
+                        <li class="nav-item"><a href="2.spellBook.html" class="nav-link">Spell Book</a></li>
+                        <li class="nav-item"><a href="3.horrid.html" class="nav-link">Horrid</a></li>
+                        <li class="nav-item"><a href="4.modelling.html" class="nav-link">3D Models</a></li>
+                        <!--<li class="nav-item"><a href="5.art.html" class="nav-link">2D Art</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main class="content-wrapper">
+            <article class="project-article">
+                <h1 class="project-title">Spell Book</h1>
+                
+                <!-- Media gallery section -->
+                <section class="media-gallery" aria-labelledby="gallery-heading">
+                    <h2 id="gallery-heading" class="visually-hidden">Game Screenshots and Video</h2>
+                    
+                    <div class="gallery-container">
+                        <div class="main-media-container">
+                            <!-- Image will be shown by default -->
+                            <figure class="main-image-container active-media">
+                                <img id="main-image" src="Images/Still 2025-06-17 125537_1.1.1.jpg" alt="Dungeon Dive gameplay screenshot">
+                                <figcaption class="visually-hidden">Main game screenshot</figcaption>
+                            </figure>
+                            
+                            <!-- YouTube video container (hidden by default) -->
+                            <div class="video-container">
+                                <iframe id="youtube-video" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="thumbnail-container" role="tablist">
+                            <button class="thumbnail active" role="tab" aria-selected="true" 
+                                onclick="showImage('Images/Still 2025-06-17 125537_1.1.1.jpg', this)">
+                                <img src="Images/Still 2025-06-17 125537_1.1.1.jpg" alt="Thumbnail 1: Dungeon environment">
+                            </button>
+                            <button class="thumbnail" role="tab" aria-selected="false" 
+                                onclick="showYouTubeVideo('29nsFS0KyvE', this)">
+                                <img src="Images\Still 2025-06-17 125652_1.1.2.jpg" alt="Watch gameplay trailer">
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Project information sections -->
+                <section class="project-info-container" aria-labelledby="project-info-heading">
+                    <h2 id="project-info-heading">Project Details</h2>
+                    <dl class="project-details">
+                        <dt>Role:</dt>
+                        <dd>Game Designer, Programmer</dd>
+                        
+                        <dt>Team Size: </dt>
+                        <dd>1</dd>
+                        
+                        <dt>Development Time: </dt>
+                        <dd>2 Weeks</dd>
+                        
+                        <dt>Engine: </dt>
+                        <dd>Unity</dd>
+                    </dl>
+                </section>
+
+                <section class="about-container" aria-labelledby="about-heading">
+                    <h2 id="about-heading">About the Project</h2>
+                    <p>Spell book is a top down magic rogue like, this is only a simple prototype so far.<br><br></p>
+
+                    <p>The game features: 
+                        <br>Multiple spells the player gets to choose randomly throughout the game.
+                        <br>
+                        <br></p>
+                </section>
+
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">What I Learned</h2>
+                    <ul class="learnings-list">
+                        <li><strong>Scriptable objects:</strong> Using scriptable objects in order to use the same code between spells without having to write the same code everytime.</li>
+                        <li><strong>2D Enemy AI:</strong> Simple enemy pathing to chase the player.</li>
+                    </ul>
+                </section>
+
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">Base spell script</h2>
+<pre><code class="language-csharp">
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ability : ScriptableObject
+{
+    //Name of the ability
+    public new string name;
+    //Time it takes for the ability to be active after use
+    public float cooldownTime;
+    //Time the ability remains active (doesnt work)
+    public float activeTime;
+
+    public virtual void Activate(GameObject parent)
+    {
+
+    }
+}</code></pre>
+                </section>
+
+                <section class="learned-container" aria-labelledby="learned-heading">
+                    <h2 id="learned-heading">Mine script</h2>
+<pre><code class="language-csharp">
+using UnityEngine;
+[CreateAssetMenu]
+
+public class Explosion : Ability
+{
+    public GameObject explosivePrefab; // Reference to the Bullet prefab
+    public float bulletSpeed = 20f;
+
+    public override void Activate(GameObject parent)
+    {
+        Transform firePoint = parent.transform.Find("FirePosition");
+        Transform aimPoint = parent.transform.Find("AimPosition");
+
+        // Calculate the direction from the fire point to the aim point
+        Vector2 direction = (aimPoint.position - firePoint.position).normalized;
+
+        // Calculate the rotation angle in degrees for 2D
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Instantiate the bullet at the fire point with the calculated rotation
+        GameObject bullet = Instantiate(explosivePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
+
+        // Get the Rigidbody2D component of the bullet and set its velocity
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = direction * bulletSpeed;
+        }
+        else
+        {
+            Debug.LogError("Bullet prefab does not have a Rigidbody2D component.");
+        }
+    }
+}
+</code></pre>
+                </section>
+
+                <section class="download-container" aria-labelledby="download-heading">
+                    <h2 id="download-heading">Play Spell Book</h2>
+                    <p>Available now on itch.io</p>
+                    <a href="https://arkers-studio.itch.io/spell-book" class="download-button">
+                        <span class="button-icon">🎮</span>
+                        Download on itch.io
+                    </a>
+                </section>
+            </article>
+        </main>
+        
+        <script src="projectScript.js" async defer></script>
+    </body>
+</html>
