@@ -1,4 +1,3 @@
-/* General Styles */
 :root {
     --primary-color: #6e45e2;
     --secondary-color: #88d3ce;
@@ -494,7 +493,6 @@ nav ul li a:hover::after {
     opacity: 0.7;
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
     .about-content {
         grid-template-columns: 1fr;

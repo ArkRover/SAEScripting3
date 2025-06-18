@@ -1,12 +1,11 @@
 // Variables for Sketchfab viewer
 let sketchfabViewer = null;
-let currentModelId = 'c327e50e5ae54c059e8bd28ce382d0bf'; // Default model ID (katana)
+let currentModelId = 'c327e50e5ae54c059e8bd28ce382d0bf'; 
 
 // Initialize Sketchfab viewer
 function initSketchfabViewer() {
     const iframe = document.getElementById('sketchfab-iframe');
     
-    // Client API will be called when the iframe is ready
     iframe.addEventListener('load', () => {
         const client = new Sketchfab(iframe);
         
@@ -14,7 +13,6 @@ function initSketchfabViewer() {
             client.start(() => {
                 client.getViewerUI((api) => {
                     sketchfabViewer = api;
-                    // Set initial settings if needed
                     api.setCameraLookAt([0, 0, 0], [0, 0, 1], 1);
                 });
             });
@@ -48,7 +46,6 @@ function loadSketchfabModel(modelId, thumbnailElement = null) {
         }, 1000);
     };
     
-    // Update active thumbnail if provided
     if (thumbnailElement) {
         updateActiveThumbnail(thumbnailElement);
     }
@@ -61,14 +58,12 @@ function resetView() {
     }
 }
 
-// Toggle wireframe (not directly supported in Sketchfab, but we can toggle materials)
 function toggleWireframe() {
     if (sketchfabViewer) {
         sketchfabViewer.getMaterialList((err, materials) => {
             if (!err && materials && materials.length > 0) {
                 // Toggle between shaded and wireframe rendering
                 sketchfabViewer.setRenderMode('shaded');
-                // Note: Sketchfab doesn't have direct wireframe support via API
             }
         });
     }
@@ -94,8 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('reset-view').addEventListener('click', resetView);
     
     document.getElementById('toggle-wireframe').addEventListener('click', () => {
-        // Note: Wireframe toggling is limited in Sketchfab
-        // This will just cycle through some rendering modes
         if (sketchfabViewer) {
             sketchfabViewer.getRenderMode((err, mode) => {
                 if (!err) {
